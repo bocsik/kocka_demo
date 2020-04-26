@@ -37,7 +37,7 @@ void pick(moveit::planning_interface::MoveGroupInterface& move_group,moveit::pla
 
   pre_grasp_pose.position.x = cube_pose.position.x;
   pre_grasp_pose.position.y = cube_pose.position.y;
-  pre_grasp_pose.position.z = cube_pose.position.z + 0.29;
+  pre_grasp_pose.position.z = cube_pose.position.z + 0.22;
 
   pre_grasp_pose.orientation.x = orientation[0];
   pre_grasp_pose.orientation.y = orientation[1];
@@ -97,7 +97,7 @@ void pick(moveit::planning_interface::MoveGroupInterface& move_group,moveit::pla
   //lineárisan fel:
 
   std::vector<geometry_msgs::Pose> retreat;
-  retreat.push_back(grasp_pose);
+  //retreat.push_back(grasp_pose);
   retreat.push_back(pre_grasp_pose); //lehetne egy külön post_grasp_pose-t is definiálni ha kell
 
   move_group.setMaxVelocityScalingFactor(0.1);
@@ -135,7 +135,7 @@ void place(moveit::planning_interface::MoveGroupInterface& move_group,moveit::pl
 
   pre_place_pose.position.x = place_pose.position.x;
   pre_place_pose.position.y = place_pose.position.y;
-  pre_place_pose.position.z = place_pose.position.z + height * 0.045 + 0.29;
+  pre_place_pose.position.z = place_pose.position.z + height * 0.045 + 0.22;
 
   pre_place_pose.orientation.x = place_pose.orientation.x;
   pre_place_pose.orientation.y = place_pose.orientation.y;
@@ -159,7 +159,7 @@ void place(moveit::planning_interface::MoveGroupInterface& move_group,moveit::pl
 
   geometry_msgs::Pose grasp_pose;
 
-  place_pose.position.z += 0.135 + 0.045 * height;
+  place_pose.position.z += 0.135 + 0.046 * height;
 
   aproach.push_back(place_pose);
 
@@ -187,7 +187,7 @@ void place(moveit::planning_interface::MoveGroupInterface& move_group,moveit::pl
   //lineárisan fel:
 
   std::vector<geometry_msgs::Pose> retreat;
-  retreat.push_back(place_pose);
+  //retreat.push_back(place_pose);
   retreat.push_back(pre_place_pose); //lehetne egy külön post_grasp_pose-t is definiálni ha kell
 
   move_group.setMaxVelocityScalingFactor(0.1);
